@@ -1,6 +1,6 @@
 import ProductsService from '../services/products.js';
 import logError from '../utils/errorHandler.js';
-import config from '../config/config.js';
+import { config } from '../config/config.js';
 import emailTransporter from '../config/email.js';
 
 class ProductsController {

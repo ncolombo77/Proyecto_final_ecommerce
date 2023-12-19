@@ -1,14 +1,23 @@
-
-import dotenv from 'dotenv';
-import path from 'path';
+import dotenv from "dotenv";
+import { __dirname } from "../utils.js";
+import path from "path";
 
 const mode = process.env.NODE_ENV || 'development'
 
+/*
 dotenv.config({
   path: path.join(path.resolve(), `.env.${mode}`)
+  //path: path.join(path.resolve(), '.env.development')
+});
+*/
+
+
+dotenv.config({
+  path: mode == "development" ? path.join(__dirname, "./config/.env.development") : path.join(__dirname, "./config/.env.production")
 });
 
-const config = {
+
+export const config = {
   server : {
     mode: mode,
     port: process.env.PORT || 8080,
@@ -25,7 +34,7 @@ const config = {
     dbName: process.env.ATLAS_DBNAME
   },
   admin: {
-   email: process.env.ADMIN_EMAIL.toLowerCase(),  //prevents bad usage of .env file
+   email: process.env.ADMIN_EMAIL,  //prevents bad usage of .env file
    pass: process.env.ADMIN_PASS
   },
 
@@ -54,7 +63,3 @@ const config = {
     }
   }
 }
-
-export default config;
-
-

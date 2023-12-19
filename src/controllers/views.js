@@ -4,7 +4,7 @@ import ProductsService from '../services/products.js';
 import UsersService from '../services/users.js';
 import TicketService from '../services/tickets.js'
 import logError from '../utils/errorHandler.js';
-import config from '../config/config.js';
+import { config } from '../config/config.js';
 
 class ViewsController {
 

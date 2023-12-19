@@ -1,10 +1,12 @@
 import express from 'express';
+import { config } from './config/config.js';
+import { __dirname } from "./utils.js";
+
 import path from 'path';
 import handlebars from 'express-handlebars';
 import cookieParser from 'cookie-parser';
-import { expressjwt as jwt } from "express-jwt";
+//import { expressjwt as jwt } from "express-jwt";
 import passport from './config/passportConfig.js';
-import config from './config/config.js';
 import logger from './utils/logger.js';
 import logError from './utils/errorHandler.js';
 import configureSocketIO from './config/socketIO.js';
@@ -21,7 +23,6 @@ import { router as userRouter } from './routes/users.js';
 
 // Express initialization
 const app = express();
-const __dirname = path.resolve();
 
 // Express configuration
 app.use(express.json());
@@ -47,8 +48,11 @@ app.engine('hbs', handlebars.engine({
 app.set('view engine', 'hbs');
 app.set('views', path.join(__dirname, 'src/views'));
 
+
+/*
 // Cookie parser middleware
 app.use(cookieParser());
+
 
 // JWT middleware
 app.use(jwt({ 
@@ -57,7 +61,7 @@ app.use(jwt({
     credentialsRequired: false,
     getToken: req => req.cookies.jwt
 }));
-
+*/
 // Swagger configuration
 const swaggerSpec = configureSwagger()
 

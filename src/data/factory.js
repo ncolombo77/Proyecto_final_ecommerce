@@ -1,6 +1,7 @@
-import config from '../config/config.js';
+import { config } from '../config/config.js';
 import CustomError from '../services/customError.js';
 import logger from '../utils/logger.js';
+import { connectDB } from "../config/dbConnection.js";
 
 let productDAO;
 let cartDAO;
@@ -14,7 +15,7 @@ async function initialize() {
     switch (storageType) {
 
         case 'mongo':
-            const connectDB = (await import('../config/dbConnection.js')).default;
+            //const connectDB = (await import('../config/dbConnection.js')).default;
             await connectDB();
 
             productDAO = (await import('./mongo/dao/productsDAO.js')).default;

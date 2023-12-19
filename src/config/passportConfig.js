@@ -1,12 +1,13 @@
 import JwtStrategy from 'passport-jwt';
 import passport from 'passport';
-import config from './config.js';
+import { config } from './config.js';
 import { Strategy as LocalStrategy } from 'passport-local';
 import { Strategy as GitHubStrategy } from 'passport-github2';
 import { Strategy as GoogleStrategy } from 'passport-google-oauth20';
 import UsersService from '../services/users.js';
 import logError from '../utils/errorHandler.js';
 
+/*
 const jwtFromRequest = (req) => {
         let token = null;
         if (req && req.cookies) {
@@ -29,7 +30,7 @@ passport.use(new JwtStrategy.Strategy({
         return done(error, false);
     }
 }));
-
+*/
 passport.use('signupStrategy', new LocalStrategy(
     {
         usernameField: 'email',
@@ -84,6 +85,7 @@ passport.use('githubStrategy', new GitHubStrategy(
     }
 ));
 
+/*
 passport.use('googleStrategy', new GoogleStrategy(
     {
         clientID: config.auth.google.clientId,
@@ -104,5 +106,6 @@ passport.use('googleStrategy', new GoogleStrategy(
         }
     }
 ));
+*/
 
 export default passport;

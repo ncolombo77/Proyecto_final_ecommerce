@@ -5,7 +5,7 @@ import CartsService from './carts.js';
 import ProductService from "../services/products.js";
 import ChatService from "../services/chat.js";
 
-import config from '../config/config.js';
+import { config } from '../config/config.js';
 import CustomError from './customError.js';
 
 class UsersService {
